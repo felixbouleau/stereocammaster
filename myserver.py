@@ -55,6 +55,23 @@ def uploaded_file(filename):
 def hello_world():
 	return jsonify(DUMMY_SYNC_RESPONSE)
 
+
+# MVP
+
+# Set initial wanted filename
+# Wait for button input
+#	Trigger IO
+#	Take own picture and store in folder
+#	Wait for 3 slaves to upload their pictures
+#	Gifify
+#	Rotate wanted filename
+#	<repeat...>
+
+# POST MVP
+
+# Serve sync settings
+# Wait for all three slaves to sync filename
+
 if __name__ == "__main__":
     avahiservice = AvahiService("resin webserver", "_http._tcp", 80)
     app.run(host='0.0.0.0', port=80, debug=True)
