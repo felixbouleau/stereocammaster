@@ -1,12 +1,13 @@
 
 import os
-from flask import Flask, request, redirect, url_for, send_from_directory
+from flask import Flask, request, redirect, url_for, send_from_directory, jsonify
 from werkzeug.utils import secure_filename
 
 from avahi.service import AvahiService
 
 UPLOAD_FOLDER = '/usr/src/app/img/'
 ALLOWED_EXTENSIONS = set(['txt', 'jpg', 'jpeg'])
+DUMMY_SYNC_RESPONSE = {"exposure": "auto", "wb": 1234, "filename": "test.jpg"}
 
 ## Web server
 app = Flask(__name__)
@@ -49,6 +50,10 @@ def upload_file():
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
+
+@app.route('/sync')
+def hello_world():
+	return jsonify(DUMMY_SYNC_RESPONSE)
 
 if __name__ == "__main__":
     avahiservice = AvahiService("resin webserver", "_http._tcp", 80)
