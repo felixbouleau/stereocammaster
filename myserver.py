@@ -45,6 +45,11 @@ def upload_file():
     </form>
     '''
 
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'],
+                               filename)
+
 if __name__ == "__main__":
     avahiservice = AvahiService("resin webserver", "_http._tcp", 80)
     app.run(host='0.0.0.0', port=80, debug=True)
