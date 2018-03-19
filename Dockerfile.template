@@ -10,6 +10,7 @@ RUN apt-get update && \
       python-dbus \
       python-flask
 
+RUN mkdir /user/src/app/img/
 COPY *.py ./
 COPY avahi avahi
 COPY start.sh ./

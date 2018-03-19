@@ -1,11 +1,11 @@
 
 import os
-from flask import Flask, request, redirect, url_for
+from flask import Flask, request, redirect, url_for, send_from_directory
 from werkzeug.utils import secure_filename
 
 from avahi.service import AvahiService
 
-UPLOAD_FOLDER = '/img_dir/'
+UPLOAD_FOLDER = '/user/src/app/img/'
 ALLOWED_EXTENSIONS = set(['txt', 'jpg', 'jpeg'])
 
 ## Web server
