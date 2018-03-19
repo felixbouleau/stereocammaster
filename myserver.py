@@ -5,7 +5,7 @@ from werkzeug.utils import secure_filename
 
 from avahi.service import AvahiService
 
-UPLOAD_FOLDER = '/'
+UPLOAD_FOLDER = '/img_dir/'
 ALLOWED_EXTENSIONS = set(['txt', 'jpg', 'jpeg'])
 
 ## Web server
