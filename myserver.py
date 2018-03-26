@@ -14,6 +14,18 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
+def create_gif(sequence_id):
+    wanted_filename = "/usr/src/app/output/%s.gif" % sequence_id
+    all_filenames = os.listdir(UPLOAD_FOLDER)
+    wanted_inputs = []
+    for file in all_filenames:
+        if file.split("_")[0] == sequence_id:
+            wanted_inputs.append(file)
+    with imageio.get_writer(wanted_filename, mode='I') as writer:
+    for filename in wanted_inputs:
+        image = imageio.imread(filename)
+        writer.append_data(image)
+
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
